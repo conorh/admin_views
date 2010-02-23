@@ -3,7 +3,7 @@ Admin Views
 
 A Rails generator to create admin scaffolding for a model.
 
-The generator is pretty 'opinionated', because I wrote this after I became tired of writing the same
+The generator is pretty opinionated, because I wrote this after I became tired of writing the same
 code over and over. It expects that your admin controllers will reside under app/controllers/admin and
 use namespaced restful routes. It also expects a base admin controller named Admin::AdminController, but
 this is a single edit in the generated controller if you do not use that.
@@ -18,9 +18,11 @@ This library uses the will_paginate gem and the formtastic gem.
 Usage
 -----
 
+Create the model that you need, make sure the db table is generated too. Then:
+
     script/generate admin_views User
 
-This will generate
+This will generate:
 
     app/controllers/admin/users_controller.rb
     app/views/admin/users/_form.html.erb
@@ -30,15 +32,15 @@ This will generate
     app/views/admin/users/new.html.erb
     app/views/admin/users/show.html.erb
 
-Add the users route to your routes.rb. Example:
+Add the model resource route to your routes.rb. Example:
 
     map.namespace :admin do |admin|
       admin.resources :users
       admin.root :controller => 'users'
     end
 
-Edit the generated index.html.erb and _user.html.erb to only display the fields that you need.
-By default they show all fields. Same with the _form.html.erb and show.html.erb.
+Edit the generated index.html.erb and \_user.html.erb to only display the fields that you need.
+By default they show all fields for the model. Same with the \_form.html.erb and show.html.erb.
 
 COPYRIGHT
 ---------
