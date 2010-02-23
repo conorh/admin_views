@@ -1,0 +1,20 @@
+<div id="create-link" style="float: right; font-size: 1.2em; font-weight: bold">
+  <%%= link_to "Create New <%= model_class %>", new_admin_<%= model_name %>_path %>
+</div>
+
+<div id="search">
+  
+</div>
+
+<h2><%= model_class %></h2>
+<table>
+  <tr>
+<% for col in columns -%>
+    <th><%= col.human_name %></th>
+<% end -%>
+    <th></th>
+  </tr>
+  <%%= render @<%= model_plural %> %>
+</table>
+
+<%%= will_paginate @<%= model_plural %> %>

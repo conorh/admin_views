@@ -1,0 +1,8 @@
+<%% semantic_form_for [:admin, @<%= model_name %>] do |form| %>
+<% # http://github.com/justinfrench/formtastic %>
+<% for col in columns -%>
+  <%%= form.input :<%= col.name %> -%>
+<% end -%>
+
+  <%%= form.buttons :commit %>
+<%% end %>

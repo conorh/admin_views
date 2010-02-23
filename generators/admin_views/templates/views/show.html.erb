@@ -1,0 +1,11 @@
+<h2><%= model_class %> <%%= @<%= model_name %>.id %></h2>
+<div id="create-link" style="float: right; font-size: 1.2em; font-weight: bold">
+  <%%= link_to "Show All <%= pluralize(model_class) %>", admin_<%= model_plural %>_path %>
+  <%%= link_to "Edit <%= model_class %>", edit_admin_<%= model_name %>_path(@<%= model_name %>) %>
+</div>
+
+<table>
+<% for col in columns -%>
+  <tr><td><%= col.human_name %></td><td><%%= h @<%= model_name %>.<%= col.name %> %></td></tr>
+<% end -%>
+</table>
