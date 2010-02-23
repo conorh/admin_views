@@ -13,7 +13,7 @@ Install
 
     gem install admin_views
 
-This library uses the will\_paginate, formtastic and make\_resourceful gems.
+This library uses the will\_paginate and formtastic gems.
 
 Usage
 -----
