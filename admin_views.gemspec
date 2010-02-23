@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = 'admin_views'
-  s.version = '0.1'
+  s.version = '0.2'
   s.date = '2010-02-22'
   s.authors = ['Conor Hunt']
   s.email = 'conor.hunt@gmail.com'
-  s.summary = %q{Rails generator to create admin views for models}
+  s.summary = %q{Rails generator to create admin scaffolding with searching and sorting for models}
   s.homepage = 'http://github.com/conorh/admin_views'
-  s.description = %q{Rails generator to create admin views for models}
+  s.description = %q{Rails generator to create admin scaffolding with searching and sorting for models}
 
   s.files = ['README.md', 'LICENSE', 'Changelog'] + Dir['generators/**/*'].to_a
 

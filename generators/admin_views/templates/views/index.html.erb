@@ -3,18 +3,31 @@
 </div>
 
 <div id="search">
-  
+  <form method="get">
+    <%%= text_field_tag 'search', params[:search] %>
+    <%%= submit_tag "Search" %>
+  </form>
 </div>
 
 <h2><%= model_class %></h2>
 <table>
   <tr>
-<% for col in columns -%>
-    <th><%= col.human_name %></th>
+<% columns.each do |col| -%>
+    <th><%%= link_to '<%= col.human_name %>', params.merge(:order => order_param('<%= col.name %>')) %></th>
 <% end -%>
     <th></th>
   </tr>
-  <%%= render @<%= model_plural %> %>
+<%% @<%= model_plural %>.each do |<%= model_name %>| %>
+  <tr id="<%= model_name %>_<%%= <%= model_name %>.id %>">
+<% columns.each do |col| -%>
+    <td><%%= h <%= model_name %>.<%= col.name %> %></td>
+<% end -%>
+    <td>
+      <%%= link_to "Edit", edit_admin_<%= model_name %>_path(<%= model_name %>) %>
+      <%%= link_to "Delete", admin_<%= model_name %>_path(<%= model_name %>), :method => :delete, :confirm => "Are you sure?" %>
+    </td>
+  </tr>
+<%% end -%>
 </table>
 
 <%%= will_paginate @<%= model_plural %> %>

@@ -1,9 +1,0 @@
-<tr id="<%= model_name %>_<%%= <%= model_name %>.id %>">
-<% for col in columns -%>
-  <td><%%= h <%= model_name %>.<%= col.name %> %></td>
-<% end -%>
-  <td>
-    <%%= link_to "Edit", edit_admin_<%= model_name %>_path(<%= model_name %>) %>
-    <%%= link_to "Delete", admin_<%= model_name %>_path(<%= model_name %>), :method => :delete, :confirm => "Are you sure?" %>
-  </td>
-</tr>
