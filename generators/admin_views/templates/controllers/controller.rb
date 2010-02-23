@@ -5,7 +5,10 @@ class Admin::<%= pluralize(model_class) %>Controller < Admin::AdminController
   end
 
   def index
+    # TODO: Add in sorting
+
     if params[:search]
+      # TODO: By default search all text fields
       @<%= model_plural %> = <%= model_class %>.paginate(:all, :page => params[:page])
     else
       @<%= model_plural %> = <%= model_class %>.paginate(:all, :page => params[:page])
