@@ -1,7 +1,7 @@
 Admin Views
 =================
 
-A Rails generator to create admin scaffolding for a model.
+A Rails generator to create admin scaffolding with searching and sorting for a model.
 
 The generator is pretty opinionated, because I wrote this after I became tired of writing the same
 code over and over. It expects that your admin controllers will reside under app/controllers/admin and
