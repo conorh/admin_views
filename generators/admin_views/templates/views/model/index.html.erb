@@ -1,0 +1,54 @@
+<%% content_for :header do %>
+ <%%= stylesheet_link_tag 'admin/table' %>
+<%% end %>
+
+<div class="title">
+  <h2><%= singular_name.humanize.pluralize %></h2>
+</div>
+
+<div class="box">
+  <div id="actions">
+    <div style="float: right;">
+      <form method="get" style="margin-top: -5px;">
+        <%%= text_field_tag 'search', params[:search], :class => 'search-input' %>
+        <%%= submit_tag "Search" %>
+      </form>
+    </div>
+  <%%= link_to "Create New <%= name %>", new_admin_<%= singular_name %>_path %>
+  </div>
+  <table>
+
+<table>
+  <thead>
+  <tr>
+<% columns.each do |col| -%>
+    <th><%%= link_to '<%= col.human_name %>', params.merge(:order => order_param('<%= col.name %>')) %></th>
+<% end -%>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+<%% @<%= plural_name %>.each do |<%= singular_name %>| %>
+  <tr id="<%= singular_name %>_<%%= <%= singular_name %>.id %>">
+    <td><%%= link_to <%= singular_name %>.id, admin_<%= singular_name %>_path(<%= singular_name %>) %></td>
+<% columns.find_all {|col| col.name != "id" }.each do |col| -%>
+<% next if [:binary, :text].include? col.type -%>
+<% if [:datetime, :date].include? col.type -%>
+      <td><%%= h <%= singular_name %>.<%= col.name %>.to_formatted_s(:short) if <%= singular_name %>.<%= col.name %> %></td>
+<% elsif [:string].include? col.type -%>
+      <td><%%= h truncate(<%= singular_name %>.<%= col.name %>, :length => 20) %></td>
+<% else %>
+      <td><%%= h <%= singular_name %>.<%= col.name %> %></td>
+<% end -%>
+<% end -%>
+    <td>
+      <%%= link_to "Edit", edit_admin_<%= singular_name %>_path(<%= singular_name %>) %>
+      <%%= link_to "Delete", admin_<%= singular_name %>_path(<%= singular_name %>), :method => :delete, :confirm => "Are you sure?" %>
+    </td>
+  </tr>
+<%% end -%>
+  </tbody>
+  </table>
+</div>
+
+<%%= will_paginate @<%= plural_name %> %>

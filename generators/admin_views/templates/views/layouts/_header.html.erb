@@ -1,0 +1,4 @@
+<div id="header">
+  <h1><%= link_to 'Admin', admin_root_path, :class => "main_section_link" %></h1>
+  <div class="menu">Welcome <%= link_to current_user.email %> | <%= link_to 'Public Site', root_path %> | <%= link_to 'Log Out', user_session_path, :method => :delete %></div>
+</div>

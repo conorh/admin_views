@@ -1,0 +1,16 @@
+<%% content_for :header do %>
+ <%%= stylesheet_link_tag 'admin/table' %>
+<%% end %>
+
+<h2><%= singular_name.humanize %> <%%= @<%= singular_name %>.id %></h2>
+<div class="box">
+  <div id="actions" style="float: right;">
+    <%%= link_to "Show All <%= singular_name.humanize.pluralize %>", admin_<%= plural_name %>_path %>
+    <%%= link_to "Edit <%= model_class %>", edit_admin_<%= singular_name %>_path(@<%= singular_name %>) %>
+  </div>
+  <table>
+<% for col in columns -%>
+    <tr><td><%= col.human_name %></td><td><%%= h @<%= singular_name %>.<%= col.name %> %></td></tr>
+<% end -%>
+  </table>
+</div>

@@ -1,0 +1,17 @@
+<% content_for :header do %>
+  <%= flot_includes(:jquery => false) %>
+<% end %>
+
+<div class="title">
+  <h2>Dashboard</h2>
+</div>
+
+<div class="box" style="min-height: 400px;">
+  <% @flot_plots.each do |flot| %>
+    <h4><%= flot[:name]%></h4>
+    <%= flot_canvas(flot[:name].underscore, :style => "width: 400px; height: 200px;") %>
+    <% flot_graph(flot[:name].underscore, flot[:plot]) do %>
+      <%= flot_plot %>
+    <% end %>
+  <% end %>
+</div>

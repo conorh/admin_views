@@ -1,0 +1,12 @@
+<%% semantic_form_for [:admin, @<%= singular_name %>] do |form| %>
+  <%%= form.inputs %>
+
+  <%%= form.buttons :commit %>
+<%% end %>
+
+  <!-- Here are the fields separated out
+<% # http://github.com/justinfrench/formtastic %>
+<% for col in columns -%>
+  <%%= form.input :<%= col.name %> -%>
+<% end -%>
+  -->
